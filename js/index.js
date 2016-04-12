@@ -82,7 +82,7 @@ ghRepos.prototype = {
                 html_url:item[i].html_url,
                 language:item[i].language||'',
                 forks:item[i].forks,
-                forks_url:item[i].forks_url,
+                forks_url:'https://github.com/'+item[i].full_name+'/network/members' ,
                 description:item[i].description||'-',
                 homepage:(function(){
                     return item[i].homepage 
@@ -90,7 +90,7 @@ ghRepos.prototype = {
                         :'';
                 })(),
                 stargazers_count:item[i].stargazers_count,
-                stargazers_url:item[i].stargazers_url,
+                stargazers_url:'https://github.com/'+item[i].full_name+'/stargazers',
                 watchers:item[i].watchers
             })
         }

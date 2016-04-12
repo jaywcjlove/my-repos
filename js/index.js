@@ -21,10 +21,11 @@ function getQueryString(url,name) {
 }
 
 var ghRepos = function(username,token){
+    token = token?'access_token='+token:'';
     this.username = username || ''
-    this.repos_url = 'https://api.github.com/search/repositories?access_token='+token+'&q=user:'+username;
-    this.starred_url = 'https://api.github.com/users/'+username+'/starred?access_token='+token;
-    this.users_url = 'https://api.github.com/users/'+username+'?access_token='+token;
+    this.repos_url = 'https://api.github.com/search/repositories?'+token+'&q=user:'+username;
+    this.starred_url = 'https://api.github.com/users/'+username+'/starred?'+token;
+    this.users_url = 'https://api.github.com/users/'+username+'?'+token;
     this.reposLayElm= this.E('repos-layout');
     this.repos_count_elm = this.E('repos_count');
     this.repos_followers_elm = this.E('repos_followers');
@@ -106,7 +107,7 @@ ghRepos.prototype = {
         var self = this;
         this.JSONP(url+'&page='+num,function(dt,e){
             var items = dt.data.items;num++;
-            if(e&&e.type !== 'error'&&items.length>0){
+            if(e&&e.type !== 'error'&&items&&items.length>0){
                 self.repos_array= self.repos_array.concat(items)
                 self.createRepos(self.repos_array)
                 self.getReposData(url,num)
@@ -139,14 +140,17 @@ ghRepos.prototype = {
                 dt.data.followers&&(self.repos_followers_elm.children[0].innerHTML = dt.data.followers)
                 dt.data.following&&(self.repos_following_elm.children[0].innerHTML = dt.data.following)
 
-                self.avatar_elm.innerHTML= '<img src="'+dt.data.avatar_url+'" alt="'+dt.data.name+'的头像">' 
-                self.nickname_elm.innerHTML= '<a href="'+dt.data.html_url+'" title="'+dt.data.name+'">'+dt.data.name+'</a>' 
+                if(dt.data&&dt.data.avatar_url&&dt.data.name){
+                    self.avatar_elm.innerHTML= '<img src="'+dt.data.avatar_url+'" alt="'+dt.data.name+'的头像">' 
+                    self.nickname_elm.innerHTML= '<a href="'+dt.data.html_url+'" title="'+dt.data.name+'">'+dt.data.name+'</a>' 
+
+                }
             }
         })
         this.getReposData(this.repos_url,1)
     }
 }
 
-new ghRepos('jaywcjlove','4fa207b1b1fd123883ebcac6e7c678bf39785cae')
+new ghRepos('jaywcjlove','')
 
 })()

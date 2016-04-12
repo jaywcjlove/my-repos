@@ -1,0 +1,20 @@
+{
+  "name": "my-repos",
+  "version": "1.0.0",
+  "description": "This is my list of repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"npm run ssr",
+    "build:css": "stylus -u autoprefixer-stylus -u tylus-px2rem css/index.styl -o css/ -c",
+    "watch:css": "stylus -u autoprefixer-stylus -w \"css/index.styl\" -o css/ -c "
+  },
+  "author": "kenny wang <398188662@qq.com>",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer-stylus": "^0.9.2",
+    "ssr": "^1.0.10",
+    "stylus": "^0.54.2",
+    "stylus-px2rem": "^1.0.3"
+  }
+}

@@ -1,0 +1,196 @@
+@import "node_modules/stylus-px2rem"
+* ,*:before, *:after{
+    box-sizing: border-box;
+}
+body,html,ul,li,h1,h2,h3,h4,h5,h6,p {
+    margin 0;
+    padding 0;
+}
+ul,li{
+    list-style none
+}
+*{
+    transition: all .25s;
+}
+
+body{
+    background-color: #E9E9E9;
+    font-family: "Helvetica Neue", Helvetica, Arial, "Pingfang SC", "Microsoft Yahei", Sans-serif;
+    
+}
+
+a{
+    text-decoration none
+}
+
+.github-corner{
+    svg{
+        fill:#E1E1E1
+        color:#000
+        position: absolute
+        top: 0
+        border: 0
+        right: 0
+        z-index 99
+        width 70px
+        height 70px
+    }
+    &:hover .octo-arm{
+        animation:octocat-wave 560ms ease-in-out
+    }
+}
+
+@keyframes octocat-wave
+    0%,100%
+        transform:rotate(0)
+    20%,60%
+        transform:rotate(-25deg)
+    40%,80%
+        transform:rotate(10deg)
+
+.Profile{
+    position: relative;
+    padding 30px 15px 0 15px
+    text-align: center;
+    background-color: #FFF;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.1),0 1px 0 0 rgba(0,0,0,0.1);
+    text-align: center;
+    .avatar,.avatar img{
+        width: 100px;
+        height: 100px;
+    }
+    .avatar{
+        display inline-block
+        overflow hidden
+        border-radius: 50%;
+        background-color: #F8F8F8;
+        border: 1px solid #EBEBEB;
+    }
+    .name{
+        margin-top: 20px;
+        margin-bottom: 40px;
+        font-size: 30px;
+        line-height: 30px;
+        height 30px
+    }
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+    .navs{
+        text-align: center;
+        border-top 1px solid #EFEFEF
+        padding 0 0 15px 0
+        margin-top 25px
+        ul{
+            margin: 13px auto 0;
+            display: table;
+            table-layout: fixed;
+            li{
+                display: table-cell;
+                width:100px
+            }
+            a{
+                display block
+                &:hover,&.active{
+                    span {
+                        color: #BD081C !important;
+                    }
+                }
+            }
+            span{
+                display block
+            }
+            .count{
+                font-size: 16px;
+                font-weight: bold;
+            }
+            .label{
+                font-size: 12px;
+                color #9A9A9A
+            }
+        }
+    }
+}
+
+.Repos-Layout{
+    ul{
+        padding 20px
+        &:after{
+            content ''
+            display block
+            clear both
+        }
+            
+    }
+    li{
+        padding 5px
+        width 25%
+        float left
+        a {
+            color #33374B
+        }
+        .card-item{
+            background-color #fff
+            border-radius 5px
+            box-shadow: 0 1px 2px 0 rgba(0,0,0,0.22);
+            padding 10px
+            &:hover{
+                box-shadow: 0 1px 2px 0 rgba(0, 105, 255, 0.69)
+            }
+            .name{
+                float left
+                font-size 16px
+            }
+            .language{
+                display block
+                line-height 23px
+                height 23px
+                font-size 14px
+                text-align right
+                color #8E8E8E
+            }
+            .des{
+                height 68px
+                padding 10px 0 15px 0
+                display block
+                overflow hidden
+                color: #323232;
+                font-size 14px
+                text-overflow:ellipsis;
+                line-height 18px
+            }
+            .repos{
+                padding-top 10px
+                a {
+                    border 1px solid #E3E3E3
+                    border-radius 3px
+                    padding-left 5px
+                    line-height 18px
+                    display inline-block
+                    font-size 12px
+                    background-color #EFEFEF
+                    color #000
+                    overflow hidden
+                    &:hover{
+                        color #bd081c
+                        background-color #FFECEC
+                        border 1px solid #bd081c
+                    }
+                    i {
+                        line-height 18px
+                        display inline-block
+                        padding 0 5px
+                        background-color #fff
+                        margin-left 5px
+                        font-style inherit
+                        font-weight bold
+                    }
+                }
+                .home{
+                    padding-right 5px
+                }
+            }
+        }
+    }
+}

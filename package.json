@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build":"npm run ssr",
-    "build:css": "stylus -u autoprefixer-stylus -u tylus-px2rem css/index.styl -o css/ -c",
-    "watch:css": "stylus -u autoprefixer-stylus -w \"css/index.styl\" -o css/ -c "
+    "build:css": "stylus -u autoprefixer-stylus -u stylus-px2rem css/index.styl -o css/ -c",
+    "watch:css": "stylus -u autoprefixer-stylus -u stylus-px2rem -w \"css/index.styl\" -o css/ -c "
   },
   "author": "kenny wang <398188662@qq.com>",
   "license": "ISC",
@@ -15,6 +15,6 @@
     "autoprefixer-stylus": "^0.9.2",
     "ssr": "^1.0.10",
     "stylus": "^0.54.2",
-    "stylus-px2rem": "^1.0.3"
+    "stylus-px2rem": "^1.0.4"
   }
 }

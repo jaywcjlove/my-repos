@@ -30,12 +30,14 @@ var ghRepos = function(username,token){
     this.repos_count_elm = this.E('repos_count');
     this.repos_followers_elm = this.E('repos_followers');
     this.repos_starred_elm = this.E('repos_starred');
+    this.repos_star_elm = this.E('repos_star_total');
     this.repos_following_elm = this.E('repos_following');
     this.avatar_elm = this.E('avatar');
     this.nickname_elm = this.E('nickname');
     this.repos_count = 0
     this.repos_starred_array = []
     this.repos_array =[]
+    this.repos_stargazers_count = 0; // 星星的数量
     this.init();
 
     this.avatar_elm.href = 'https://github.com/'+self.username
@@ -103,16 +105,23 @@ ghRepos.prototype = {
             elm.attachEvent('on'+type, handle);
         }
     },
+    getStargazersCount:function(items){
+        for(var i =0 ;i< items.length;i++){
+            this.repos_stargazers_count +=items[i].stargazers_count;
+        }
+    },
     getReposData:function(url,num){
         var self = this;
         this.JSONP(url+'&page='+num,function(dt,e){
             var items = dt.data.items;num++;
             if(e&&e.type !== 'error'&&items&&items.length>0){
                 self.repos_array= self.repos_array.concat(items)
-                self.createRepos(self.repos_array)
-                self.getReposData(url,num)
+                self.createRepos(self.repos_array);
+                self.getReposData(url,num);
+                self.getStargazersCount(items);
             }else{
                 self.repos_count_elm.children[0].innerHTML = self.repos_array.length;
+                self.repos_star_elm.children[0].innerHTML = self.repos_stargazers_count;
             }
         })
 
